@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2025 ChatFriend. Made by Akshita Sahu. All Rights Reserved.
+ *
+ * Licensed under the GNU Affero General Public License, Version 3 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.gnu.org/licenses/agpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import type { RouteMeta, RouteRecordRaw } from 'vue-router';
+import { defineComponent } from 'vue';
+
+export type Component<T = any> =
+  | ReturnType<typeof defineComponent>
+  | (() => Promise<typeof import('*.vue')>)
+  | (() => Promise<T>);
+
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {
+  name: string;
+  meta: RouteMeta;
+  component?: Component | string;
+  components?: Component;
+  children?: AppRouteRecordRaw[];
+  props?: Recordable;
+  fullPath?: string;
+  show?: boolean;
+}
+
+export interface Meta {
+  // 名称
+  title: string;
+  // 是否忽略权限
+  ignoreAuth?: boolean;
+  permissions?: string[];
+  // 是否不缓存
+  noKeepAlive?: boolean;
+  // 是否固定在tab上
+  affix?: boolean;
+  // tab上的图标
+  icon?: string;
+  // 跳转地址
+  frameSrc?: string;
+  // 外链跳转地址
+  externalLink?: string;
+  //隐藏
+  hidden?: boolean;
+}
+
+export interface Menu {
+  title?: string;
+  label?: string;
+  key?: string;
+  meta?: RouteMeta;
+  name: string;
+  component?: Component | string;
+  components?: Component;
+  children?: AppRouteRecordRaw[];
+  props?: Recordable;
+  fullPath?: string;
+  icon?: any;
+  path: string;
+  permissions?: string[];
+  redirect?: string;
+  sort?: number;
+}
+
+export interface IModuleType {
+  default: Array<RouteRecordRaw> | RouteRecordRaw;
+}

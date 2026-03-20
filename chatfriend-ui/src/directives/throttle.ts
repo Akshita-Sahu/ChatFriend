@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2025 ChatFriend. Made by Akshita Sahu. All Rights Reserved.
+ *
+ * Licensed under the GNU Affero General Public License, Version 3 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.gnu.org/licenses/agpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+  需求：防止按钮在短时间内被多次点击，使用节流函数限制规定时间内只能点击一次。
+
+  思路：
+    1、第一次点击，立即调用方法并禁用按钮，等延迟结束再次激活按钮
+    2、将需要触发的方法绑定在指令上
+  
+  使用：给 Dom 加上 v-throttle 及回调函数即可
+  <button v-throttle="debounceClick">节流提交</button>
+*/
+import type { Directive, DirectiveBinding } from 'vue';
+
+interface ElType extends HTMLElement {
+  __handleClick__: () => any;
+  disabled: boolean;
+}
+const throttle: Directive = {
+  mounted(el: ElType, binding: DirectiveBinding) {
+    if (typeof binding.value !== 'function') {
+      throw 'callback must be a function';
+    }
+    let timer: NodeJS.Timeout | null = null;
+    el.__handleClick__ = function () {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      if (!el.disabled) {
+        el.disabled = true;
+        binding.value();
+        timer = setTimeout(() => {
+          el.disabled = false;
+        }, 1000);
+      }
+    };
+    el.addEventListener('click', el.__handleClick__);
+  },
+  beforeUnmount(el: ElType) {
+    el.removeEventListener('click', el.__handleClick__);
+  },
+};
+
+export default throttle;

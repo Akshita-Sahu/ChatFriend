@@ -1,10 +1,10 @@
 # 开源许可协议
 
-LangChat 遵循 Apache License 2.0 版本，但附加以下条件：
+ChatFriend 遵循 Apache License 2.0 版本，但附加以下条件：
 
-1. LangChat 可用于商业用途，包括作为其他应用程序的后端服务或企业应用开发平台。如果满足以下条件，则需要从作者处获得商业许可：
+1. ChatFriend 可用于商业用途，包括作为其他应用程序的后端服务或企业应用开发平台。如果满足以下条件，则需要从作者处获得商业许可：
 
-   a. **LOGO 和版权信息**：在使用 LangChat 时，您不得删除、修改或隐藏控制台或产品中的 LangChat LOGO 或版权信息。
+   a. **LOGO 和版权信息**：在使用 ChatFriend 时，您不得删除、修改或隐藏控制台或产品中的 ChatFriend LOGO 或版权信息。
 
 2. 作为贡献者，您同意：
 
@@ -16,4 +16,4 @@ LangChat 遵循 Apache License 2.0 版本，但附加以下条件：
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-© 2025 LangChat 团队
+© 2025 ChatFriend 团队

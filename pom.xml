@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2024 LangChat. TyCoding All Rights Reserved.
+  ~ Copyright (c) 2025 ChatFriend. Made by Akshita Sahu. All Rights Reserved.
   ~
   ~ Licensed under the GNU Affero General Public License, Version 3 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
     </parent>
 
     <groupId>cn.tycoding</groupId>
-    <artifactId>langchat</artifactId>
+    <artifactId>chatfriend</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
@@ -47,18 +47,18 @@
     </properties>
 
     <modules>
-        <module>langchat-ai</module>
-        <module>langchat-common</module>
-        <module>langchat-server</module>
-        <module>langchat-upms</module>
-        <module>langchat-auth</module>
+        <module>chatfriend-ai</module>
+        <module>chatfriend-common</module>
+        <module>chatfriend-server</module>
+        <module>chatfriend-upms</module>
+        <module>chatfriend-auth</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>cn.tycoding</groupId>
-                <artifactId>langchat-common-bom</artifactId>
+                <artifactId>chatfriend-common-bom</artifactId>
                 <version>${revision}</version>
                 <type>pom</type>
                 <scope>import</scope>
